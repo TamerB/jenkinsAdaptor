@@ -1,0 +1,3 @@
+---
+ - name: deploy code
+   copy: src={{ file }} dest=/var/lib/tomcat7/webapps/

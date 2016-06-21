@@ -1,0 +1,18 @@
+---
+ - name: install tomcat
+   apt: name=tomcat7 state=latest update_cache=yes
+
+ - name: ensure tomcat is running (and enable it at boot)
+   service: name=tomcat7 state=started enabled=yes
+
+# - name: write the tomcat server file
+#   template: src=templates/server.xml dest=/etc/tomcat7/server.xml
+#   notify:
+#   - restart tomcat
+
+ - name: write the tomcat config file
+   template: src=templates/tomcat.conf.j2 dest=/etc/default/tomcat7
+   notify:
+   - restart tomcat
+
+
